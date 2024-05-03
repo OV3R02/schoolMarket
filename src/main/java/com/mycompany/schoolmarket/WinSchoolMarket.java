@@ -273,10 +273,10 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         String newStudent = "Le credenziali del nuovo studente sono: \n";
         String firstName = tx_firstName.getText();
         String lastName  = tx_lastName.getText();
-        String class = tx_classSection.getText();
+        String classe = tx_classSection.getText();
         int age = Integer.parseInt(tx_age.getText());
         
-        Student st = new Student(firstName, lastName, age, class);
+        Student st = new Student(firstName, lastName, age, classe);
         
         newStudent += st.toString();
         System.out.println(newStudent);
