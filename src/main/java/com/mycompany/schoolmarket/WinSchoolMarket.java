@@ -4,12 +4,30 @@
  */
 package com.mycompany.schoolmarket;
 
+import com.mysql.cj.jdbc.Driver;
+import com.mysql.cj.jdbc.PreparedStatementWrapper;
+import com.mysql.cj.xdevapi.Result;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 /**
  *
  * @author utentepc
  */
 public class WinSchoolMarket extends javax.swing.JFrame {
 
+    
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/school_market";
+    static final String USER = "root";
+    static final String PASS = "root";
+    Connection conn;
+    
+    ArrayList<Integer> listIdStudents = new ArrayList<>();
+    ArrayList<Integer> listIdBooks = new ArrayList<>();
+    
     /**
      * Creates new form WinSchoolMarket
      */
@@ -53,6 +71,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tp_showStudent = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        tx_email = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +159,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jButton1.setText("PREMI PER CONFERMARE");
 
+        jLabel12.setText("E-mail : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,7 +200,9 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                                         .addComponent(tx_age)))
                                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                     .addGap(19, 19, 19)
-                                                    .addComponent(tx_classSection, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(tx_email)
+                                                        .addComponent(tx_classSection, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)))))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(jLabel9)
                                             .addGap(32, 32, 32)
@@ -196,7 +220,9 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                     .addComponent(jLabel10))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btInsertStudentSubscription)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btInsertStudentSubscription)
+                            .addComponent(jLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
@@ -212,6 +238,9 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(27, 27, 27)
@@ -233,10 +262,15 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                 .addComponent(tx_age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)
                                 .addComponent(tx_classSection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(btInsertStudentSubscription))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tx_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btInsertStudentSubscription)
+                        .addGap(29, 29, 29)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -274,9 +308,10 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         String firstName = tx_firstName.getText();
         String lastName  = tx_lastName.getText();
         String classe = tx_classSection.getText();
+        String email = tx_email.getText();
         int age = Integer.parseInt(tx_age.getText());
         
-        Student st = new Student(firstName, lastName, age, classe);
+        Student st = new Student(firstName, lastName, age, classe, email);
         
         newStudent += st.toString();
         System.out.println(newStudent);
@@ -287,8 +322,34 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         tx_lastName.setText("");
         tx_age.setText("");
         tx_classSection.setText("");
+        tx_email.setText("");
         
         lb_logMessage.setText("Studente aggiunto con successo!");
+        
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO t_students(firstname, lastname, age, section, email)"
+                    + "values (?,?,?,?,?)");
+            stmt.setString(1, firstName);
+            stmt.setString(2, lastName);
+            stmt.setInt(3, age);
+            stmt.setString(4, classe);
+            stmt.setString(5, email);
+            int rows = stmt.executeUpdate();
+            System.out.println("Rows impacted: "+rows);
+            
+            ResultSet rs = stmt.executeQuery("select * from t_students order by id_students desc");
+            while (rs.next()){
+                //System.out.println("ID: "+ rs.getString("id_students");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                System.out.println("");
+                
+            }
+            
+        } catch (Exception e) {
+        }
         
     }//GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
 
@@ -337,6 +398,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -356,6 +418,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private javax.swing.JTextField tx_age;
     private javax.swing.JTextField tx_bookName;
     private javax.swing.JTextField tx_classSection;
+    private javax.swing.JTextField tx_email;
     private javax.swing.JTextField tx_firstName;
     private javax.swing.JTextField tx_lastName;
     private javax.swing.JTextField tx_lastYearClass;

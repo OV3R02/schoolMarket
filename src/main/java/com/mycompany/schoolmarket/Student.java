@@ -14,12 +14,22 @@ public class Student {
     private String lastName;
     private int age;
     private String classSection;
+    private String email;
 
-    public Student(String firstName, String lastName, int age, String classSection) {
+    public Student(String firstName, String lastName, int age, String classSection, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.classSection = classSection;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -59,7 +69,7 @@ public class Student {
     
     @Override
     public String toString() {
-        return "\n" +" firstName=" + firstName + "\n lastName=" + lastName + "\n age=" + age + "\n classBefore=" + classSection;
+        return "\n" +" firstName=" + firstName + "\n lastName=" + lastName + "\n age=" + age + "\n classBefore=" + classSection + "\n email="+email;
     }
 
     
