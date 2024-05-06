@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -391,6 +392,22 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 new WinSchoolMarket().setVisible(true);
             }
         });
+    }
+    
+    public void refreshListStudents () {
+        try {
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement stmt = conn.prepareStatement("SELECT id_student, concat(lastname, \" \", firstname) as nominatives FROM t_students ORDER BY nominatives");
+            ResultSet rs = stmt.executeQuery();
+            DefaultListModel model = new DefaultListModel();
+            listIdStudents.clear();
+            
+            while (rs.next()) {
+                model
+                
+            }
+        } catch (Exception e) {
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
