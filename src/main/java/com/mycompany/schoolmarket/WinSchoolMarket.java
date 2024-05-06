@@ -340,15 +340,13 @@ public class WinSchoolMarket extends javax.swing.JFrame {
             
             ResultSet rs = stmt.executeQuery("select * from t_students order by id_students desc");
             while (rs.next()){
-                //System.out.println("ID: "+ rs.getString("id_students");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-                System.out.println("");
-                
+                System.out.println("ID: "+rs.getInt("id_student"));
+                System.out.println("Firstname: "+ rs.getString("firstname"));
+                System.out.println("Lastname: "+rs.getString("lastname"));       
             }
             
         } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
     }//GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
