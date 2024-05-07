@@ -13,10 +13,10 @@ public class Student {
     private String firstName;
     private String lastName;
     private int age;
-    private String classSection;
+    private int classSection;
     private String email;
 
-    public Student(String firstName, String lastName, int age, String classSection, String email) {
+    public Student(String firstName, String lastName, int age, int classSection, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -44,10 +44,6 @@ public class Student {
         return age;
     }
 
-    public String getClassSection() {
-        return classSection;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -60,9 +56,14 @@ public class Student {
         this.age = age;
     }
 
-    public void setClassSection(String classSection) {
+    public void setClassSection(int classSection) {
         this.classSection = classSection;
     }
+
+    public int getClassSection() {
+        return classSection;
+    }
+
 
     
     
