@@ -57,7 +57,7 @@ class Book {
     
         @Override
     public String toString() {
-        return "Book{" + "bookName=" + bookName + ", classBefore=" + classBefore + ", cost=" + cost + ", bookHealth=" + bookHealth + '}';
+        return "\nbookName = " + bookName + "\nclassBefore = " + classBefore + "\ncost = " + cost + "\nbookHealth = " + bookHealth;
     }
     
 }
