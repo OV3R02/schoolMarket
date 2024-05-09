@@ -226,7 +226,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(lst_subjects);
 
-        jLabel22.setText("Premi il \"OKAY\" per completare");
+        jLabel22.setText("Premi \"OKAY\" per completare");
 
         jLabel23.setText("la registrazione");
 
@@ -274,7 +274,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(tx_email, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel22)
                                                     .addComponent(btInsertStudentSubscription)
@@ -392,7 +392,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel23)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
