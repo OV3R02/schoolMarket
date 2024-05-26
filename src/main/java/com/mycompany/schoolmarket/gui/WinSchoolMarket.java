@@ -35,7 +35,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         refreshListStudents();
         refreshListClassBooks();
         refreshListSubjects();
-        refreshTableBooks();
+        //refreshTableBooks();
     }
 
     /**
@@ -688,8 +688,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         Student sti = Store.getStudentIndex(lst_studentsList.getSelectedValue().getIdStudent());
         StudentClass ci1 = Store.getClassIndex(lst_classesBook.getSelectedValue().getIdClass());
         Subject sbi = Store.getSubjectIndex(lst_subjects.getSelectedValue().getIdSubject());
+        
         Book bv = SchoolMarket.bookVending(bookName, cost, bci, sti, ci1, sbi);
-
         newBook += bv.toString();
         System.out.println(newBook);
         newBook = tp_showStudent.getText() + "\n" + newBook;
@@ -805,7 +805,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void refreshTableBooks() {
 
-        
         DefaultTableModel model = (DefaultTableModel) tb_booksList.getModel();
         Student sti = Store.getStudentIndex(lst_studentsList.getSelectedValue().getIdStudent());
         List<Book> booksByUser = SchoolMarket.booksByUser(sti.getIdStudent());
