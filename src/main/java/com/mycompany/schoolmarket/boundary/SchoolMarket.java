@@ -64,4 +64,7 @@ public class SchoolMarket {
         return Store.allSubjectList();
     }
 
+    public static List<Book> booksList() {
+        return Store.findAllBooks();
+    }
 }

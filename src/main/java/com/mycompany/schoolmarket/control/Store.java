@@ -102,7 +102,7 @@ public class Store {
         return sb;
     }
 
-    public static List<Book> findBooksByStudentId(int idStudent) {
+    public static List<Book> findBooksByStudentId(long idStudent) {
         return em.createNamedQuery(Book.FIND_BY_STUDENT_ID, Book.class)
                 .setParameter("id", idStudent)
                 .getResultList();
@@ -121,6 +121,11 @@ public class Store {
 
     public static List<Subject> allSubjectList() {
         return em.createQuery("SELECT e FROM Subject e", Subject.class)
+            .getResultList();
+    }
+
+    public static List<Book> findAllBooks() {
+        return em.createQuery("SELECT e FROM Book e", Book.class)
             .getResultList();
     }
 }

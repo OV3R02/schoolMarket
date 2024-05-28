@@ -11,7 +11,11 @@ import com.mycompany.schoolmarket.entity.BookCondition;
 import com.mycompany.schoolmarket.entity.Student;
 import com.mycompany.schoolmarket.entity.StudentClass;
 import com.mycompany.schoolmarket.entity.Subject;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -26,6 +30,7 @@ import javax.swing.table.TableModel;
  */
 public class WinSchoolMarket extends javax.swing.JFrame {
 
+    ArrayList<Integer> listIdStudents = new ArrayList<>();
     /**
      * Creates new form WinSchoolMarket
      */
@@ -173,7 +178,9 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         lst_studentsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lst_studentsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lst_studentsListValueChanged(evt);
+                if(!evt.getValueIsAdjusting()){
+                        lst_studentsListValueChanged(evt);
+                }
             }
         });
         jScrollPane4.setViewportView(lst_studentsList);
@@ -669,10 +676,11 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void lst_studentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
         // TODO add your handling code here:
-        // int index = lst_studentsList.getSelectedIndex();
+        
         String firstname = lst_studentsList.getSelectedValue().getFname();
         String lastname = lst_studentsList.getSelectedValue().getLname();
         String name = lastname + " " + firstname;
+
         int classSection = lst_studentsList.getSelectedValue().getClassSection().getIdClass();
         lb_logMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection);
         refreshTableBooks();
@@ -683,13 +691,14 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         String newBook = "Le credenziali del nuovo libro sono: \n";
         String bookName = tx_bookName.getText();
-        BigDecimal cost = (BigDecimal) sp_bookCost.getValue();
+        BigDecimal cost = BigDecimal.valueOf((double) sp_bookCost.getValue()) ;
         BookCondition bci = Store.getBookConditionIndex(tx_bookHealth.getText());
         Student sti = Store.getStudentIndex(lst_studentsList.getSelectedValue().getIdStudent());
         StudentClass ci1 = Store.getClassIndex(lst_classesBook.getSelectedValue().getIdClass());
         Subject sbi = Store.getSubjectIndex(lst_subjects.getSelectedValue().getIdSubject());
         
         Book bv = SchoolMarket.bookVending(bookName, cost, bci, sti, ci1, sbi);
+        refreshTableBooks();
         newBook += bv.toString();
         System.out.println(newBook);
         newBook = tp_showStudent.getText() + "\n" + newBook;
@@ -699,7 +708,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         tx_bookHealth.setText("");
         sp_bookCost.setValue(0);
 
-        lb_logMessage.setText("Studente aggiunto con successo!");
+        lb_logMessage.setText("Libro aggiunto con successo!");
 
     }// GEN-LAST:event_btInsertBookActionPerformed
 
@@ -789,7 +798,11 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         List<Student> result = SchoolMarket.studentsList();
         DefaultListModel<Student> model = new DefaultListModel<>();
-        result.forEach(v -> model.addElement(v));
+        //result.forEach(v -> model.addElement(v));
+        for (Student student : result) {
+                model.addElement(student);
+                listIdStudents.add(student.getIdStudent());
+        }
         lst_studentsList.setModel(model);
 
     }
@@ -805,9 +818,16 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void refreshTableBooks() {
 
+        
+        int index = lst_studentsList.getSelectedIndex();
+        int idstSelected = listIdStudents.get(index);
+        List<Book> booksByUser = SchoolMarket.booksByUser(idstSelected);
         DefaultTableModel model = (DefaultTableModel) tb_booksList.getModel();
-        Student sti = Store.getStudentIndex(lst_studentsList.getSelectedValue().getIdStudent());
-        List<Book> booksByUser = SchoolMarket.booksByUser(sti.getIdStudent());
+        DefaultTableModel dm = (DefaultTableModel) tb_booksList.getModel();
+
+        while (model.getRowCount() > 0) {
+                model.removeRow(0);
+        }
 
         for (Book b : booksByUser) {
                 String bn = b.getBookName().toString();
@@ -819,6 +839,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 };
                 model.addRow(obj);
         }
+        tb_booksList.setModel(model);
 
         /*try {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
