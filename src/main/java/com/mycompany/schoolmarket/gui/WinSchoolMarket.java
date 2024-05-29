@@ -729,10 +729,10 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lb_logMessage;
-    private javax.swing.JList<String> lst_classesBook;
-    private javax.swing.JList<String> lst_classesList;
-    private javax.swing.JList<String> lst_studentsList;
-    private javax.swing.JList<String> lst_subjects;
+    private javax.swing.JList<StudentClass> lst_classesBook;
+    private javax.swing.JList<StudentClass> lst_classesList;
+    private javax.swing.JList<Student> lst_studentsList;
+    private javax.swing.JList<Subject> lst_subjects;
     private javax.swing.JSpinner sp_bookCost;
     private javax.swing.JTable tb_booksList;
     private javax.swing.JTextPane tp_showStudent;
