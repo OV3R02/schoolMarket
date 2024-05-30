@@ -67,4 +67,24 @@ public class SchoolMarket {
     public static List<Book> booksList() {
         return Store.findAllBooks();
     }
+
+
+    public static BookCondition getBookCondition(String grade) {
+        return Store.getBookConditionIndex(grade);
+    }
+
+
+    public static Student getStudent(long idStudent) {
+        return Store.getStudentIndex(idStudent);
+    }
+
+
+    public static StudentClass getClass(int idClass) {
+        return Store.getClassIndex(idClass);
+    }
+
+
+    public static Subject getSubject(int idSubject) {
+        return Store.getSubjectIndex(idSubject);
+    }
 }

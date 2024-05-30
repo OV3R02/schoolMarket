@@ -491,12 +491,18 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         String newBook = "Le credenziali del nuovo libro sono: \n";
         String bookName = txBookName.getText();
         BigDecimal cost = BigDecimal.valueOf((double) spBookCost.getValue()) ;
+
+        BookCondition bc = SchoolMarket.getBookCondition(txBookHealth.getText());
+        Student st = SchoolMarket.getStudent(lstStudentsList.getSelectedValue().getIdStudent());
+        StudentClass cl = SchoolMarket.getClass(lstClassesBook.getSelectedValue().getIdClass());
+        Subject sb = SchoolMarket.getSubject(lstSubjects.getSelectedValue().getIdSubject());
+/* 
         BookCondition bci = Store.getBookConditionIndex(txBookHealth.getText());
         Student sti = Store.getStudentIndex(lstStudentsList.getSelectedValue().getIdStudent());
         StudentClass ci1 = Store.getClassIndex(lstClassesBook.getSelectedValue().getIdClass());
         Subject sbi = Store.getSubjectIndex(lstSubjects.getSelectedValue().getIdSubject());
-        
-        Book bv = SchoolMarket.bookVending(bookName, cost, bci, sti, ci1, sbi);
+*/     
+        Book bv = SchoolMarket.bookVending(bookName, cost, bc, st, cl, sb);
         refreshTableBooks();
         newBook += bv.toString();
         System.out.println(newBook);
@@ -534,9 +540,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void lstSubjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_subjectsValueChanged
         // TODO add your handling code here:
-        // int index = lst_subjects.getSelectedIndex();
         String subject = lstSubjects.getSelectedValue().getSubjectName();
-        // int classId = lst_subjects.getSelectedValue().getIdSubject();
         lbLogMessage.setText("SUBJECT: " + subject);
 
     }// GEN-LAST:event_lst_subjectsValueChanged
@@ -599,12 +603,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         DefaultListModel<Student> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
         result.forEach(v -> listIdStudents.add(v.getIdStudent()));
-        
-        /*for (Student student : result) {
-                model.addElement(student);
-                listIdStudents.add(student.getIdStudent());
-        }
-        lst_studentsList.setModel(model);*/
 
     }
 
