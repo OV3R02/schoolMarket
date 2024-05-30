@@ -11,18 +11,11 @@ import com.mycompany.schoolmarket.entity.BookCondition;
 import com.mycompany.schoolmarket.entity.Student;
 import com.mycompany.schoolmarket.entity.StudentClass;
 import com.mycompany.schoolmarket.entity.Subject;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
-
 import java.math.BigDecimal;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.DefaultListModel;
-import javax.swing.JTable;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -55,38 +48,38 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tb_booksList = new javax.swing.JTable();
+        tbBooksList = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        tx_firstName = new javax.swing.JTextField();
-        tx_lastName = new javax.swing.JTextField();
-        tx_age = new javax.swing.JTextField();
+        txFirstName = new javax.swing.JTextField();
+        txLastName = new javax.swing.JTextField();
+        txAge = new javax.swing.JTextField();
         btInsertStudentSubscription = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tx_bookName = new javax.swing.JTextField();
-        sp_bookCost = new javax.swing.JSpinner();
-        lb_logMessage = new javax.swing.JLabel();
+        txBookName = new javax.swing.JTextField();
+        spBookCost = new javax.swing.JSpinner();
+        lbLogMessage = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tp_showStudent = new javax.swing.JTextPane();
+        tpShowStudent = new javax.swing.JTextPane();
         btInsertBook = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        tx_email = new javax.swing.JTextField();
+        txEmail = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        lst_studentsList = new javax.swing.JList<>();
+        lstStudentsList = new javax.swing.JList<>();
         jLabel13 = new javax.swing.JLabel();
-        tx_bookHealth = new javax.swing.JTextField();
+        txBookHealth = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        lst_classesList = new javax.swing.JList<>();
+        lstClassesList = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        lst_classesBook = new javax.swing.JList<>();
+        lstClassesBook = new javax.swing.JList<>();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -96,7 +89,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        lst_subjects = new javax.swing.JList<>();
+        lstSubjects = new javax.swing.JList<>();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -106,7 +99,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jLabel1.setText("SCHOOL MARKET");
 
-        tb_booksList.setModel(new javax.swing.table.DefaultTableModel(
+        tbBooksList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -122,7 +115,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tb_booksList);
+        jScrollPane2.setViewportView(tbBooksList);
 
         jLabel2.setText("Inserisci i tuoi dati nelle caselle sottostanti per registrarti nel e-commerce!");
 
@@ -136,9 +129,9 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jLabel7.setText("Sezione classe :");
 
-        tx_firstName.addActionListener(new java.awt.event.ActionListener() {
+        txFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tx_firstNameActionPerformed(evt);
+                txFirstNameActionPerformed(evt);
             }
         });
 
@@ -157,17 +150,17 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jLabel11.setText("Classe :");
 
-        tx_bookName.addActionListener(new java.awt.event.ActionListener() {
+        txBookName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tx_bookNameActionPerformed(evt);
+                txBookNameActionPerformed(evt);
             }
         });
 
-        sp_bookCost.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+        spBookCost.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
-        lb_logMessage.setText("nessun dato ancora fornito...");
+        lbLogMessage.setText("nessun dato ancora fornito...");
 
-        jScrollPane3.setViewportView(tp_showStudent);
+        jScrollPane3.setViewportView(tpShowStudent);
 
         btInsertBook.setText("OKAY");
         btInsertBook.addActionListener(new java.awt.event.ActionListener() {
@@ -178,33 +171,33 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jLabel12.setText("E-mail : ");
 
-        lst_studentsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lst_studentsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstStudentsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstStudentsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lst_studentsListValueChanged(evt);
+                lstStudentsListValueChanged(evt);
             }
         });
-        jScrollPane4.setViewportView(lst_studentsList);
+        jScrollPane4.setViewportView(lstStudentsList);
 
         jLabel13.setText("Stato dell'oggetto :");
 
         jLabel14.setText("(es. Grado A, B o C)");
 
-        lst_classesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lst_classesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstClassesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstClassesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lst_classesListValueChanged(evt);
+                lstClassesListValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(lst_classesList);
+        jScrollPane1.setViewportView(lstClassesList);
 
-        lst_classesBook.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lst_classesBook.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstClassesBook.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstClassesBook.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lst_classesBookValueChanged(evt);
+                lstClassesBookValueChanged(evt);
             }
         });
-        jScrollPane5.setViewportView(lst_classesBook);
+        jScrollPane5.setViewportView(lstClassesBook);
 
         jLabel15.setText("LISTA LIBRI");
 
@@ -220,13 +213,13 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         jLabel21.setText("Materia :");
 
-        lst_subjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lst_subjects.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        lstSubjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lstSubjects.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lst_subjectsValueChanged(evt);
+                lstSubjectsValueChanged(evt);
             }
         });
-        jScrollPane6.setViewportView(lst_subjects);
+        jScrollPane6.setViewportView(lstSubjects);
 
         jLabel22.setText("Premi \"OKAY\" per completare");
 
@@ -267,15 +260,15 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(tx_firstName)
-                                                    .addComponent(tx_lastName, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                                    .addComponent(tx_age))
+                                                    .addComponent(txFirstName)
+                                                    .addComponent(txLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                                                    .addComponent(txAge))
                                                 .addGap(23, 23, 23)
                                                 .addComponent(jLabel7)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(tx_email, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel22)
@@ -291,7 +284,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                     .addComponent(jLabel9)
-                                                    .addComponent(tx_bookName))
+                                                    .addComponent(txBookName))
                                                 .addGap(24, 24, 24))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel21)
@@ -300,11 +293,11 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel10)
-                                            .addComponent(sp_bookCost, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(spBookCost, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jLabel13)
-                                                .addComponent(tx_bookHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txBookHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel17)
                                             .addComponent(jLabel18)
                                             .addComponent(btInsertBook)))
@@ -330,7 +323,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                                 .addComponent(jScrollPane3))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
-                                                .addComponent(lb_logMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
+                                                .addComponent(lbLogMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -374,21 +367,21 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tx_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tx_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tx_age, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tx_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel22)
@@ -415,8 +408,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                     .addComponent(jLabel10))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(sp_bookCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tx_bookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(spBookCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -427,7 +420,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(tx_bookHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txBookHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel17)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -440,7 +433,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                         .addGap(29, 29, 29))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lb_logMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbLogMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btInsertStudentSubscription))
                         .addGap(26, 26, 26)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -450,7 +443,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tx_firstNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_firstNameActionPerformed
+    private void txFirstNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_firstNameActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_tx_firstNameActionPerformed
 
@@ -458,37 +451,37 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String newStudent = "Le credenziali del nuovo studente sono: \n";
-        String firstName = tx_firstName.getText();
-        String lastName = tx_lastName.getText();
-        String email = tx_email.getText();
-        String age = tx_age.getText();
+        String firstName = txFirstName.getText();
+        String lastName = txLastName.getText();
+        String email = txEmail.getText();
+        String age = txAge.getText();
         int ageNum = Integer.parseInt(age);
 
-        StudentClass ci = Store.getClassIndex(lst_classesList.getSelectedIndex());
+        StudentClass ci = Store.getClassIndex(lstClassesList.getSelectedIndex());
         Student str = SchoolMarket.studentRegistration(firstName, lastName, ageNum, email, null, ci);
         newStudent += str.toString();
         System.out.println(newStudent);
-        newStudent = tp_showStudent.getText() + "\n" + newStudent;
-        tp_showStudent.setText(newStudent);
+        newStudent = tpShowStudent.getText() + "\n" + newStudent;
+        tpShowStudent.setText(newStudent);
 
-        tx_firstName.setText("");
-        tx_lastName.setText("");
-        tx_age.setText("");
-        tx_email.setText("");
+        txFirstName.setText("");
+        txLastName.setText("");
+        txAge.setText("");
+        txEmail.setText("");
 
-        lb_logMessage.setText("Studente aggiunto con successo!");
+        lbLogMessage.setText("Studente aggiunto con successo!");
 
     }// GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
 
-    private void lst_studentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
+    private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
         // TODO add your handling code here:
         
-        String firstname = lst_studentsList.getSelectedValue().getFname();
-        String lastname = lst_studentsList.getSelectedValue().getLname();
+        String firstname = lstStudentsList.getSelectedValue().getFname();
+        String lastname = lstStudentsList.getSelectedValue().getLname();
         String name = lastname + " " + firstname;
 
-        int classSection = lst_studentsList.getSelectedValue().getClassSection().getIdClass();
-        lb_logMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection);
+        StudentClass classSection = lstStudentsList.getSelectedValue().getClassSection();
+        lbLogMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection);
         refreshTableBooks();
     }// GEN-LAST:event_lst_studentsListValueChanged
 
@@ -496,55 +489,55 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         String newBook = "Le credenziali del nuovo libro sono: \n";
-        String bookName = tx_bookName.getText();
-        BigDecimal cost = BigDecimal.valueOf((double) sp_bookCost.getValue()) ;
-        BookCondition bci = Store.getBookConditionIndex(tx_bookHealth.getText());
-        Student sti = Store.getStudentIndex(lst_studentsList.getSelectedValue().getIdStudent());
-        StudentClass ci1 = Store.getClassIndex(lst_classesBook.getSelectedValue().getIdClass());
-        Subject sbi = Store.getSubjectIndex(lst_subjects.getSelectedValue().getIdSubject());
+        String bookName = txBookName.getText();
+        BigDecimal cost = BigDecimal.valueOf((double) spBookCost.getValue()) ;
+        BookCondition bci = Store.getBookConditionIndex(txBookHealth.getText());
+        Student sti = Store.getStudentIndex(lstStudentsList.getSelectedValue().getIdStudent());
+        StudentClass ci1 = Store.getClassIndex(lstClassesBook.getSelectedValue().getIdClass());
+        Subject sbi = Store.getSubjectIndex(lstSubjects.getSelectedValue().getIdSubject());
         
         Book bv = SchoolMarket.bookVending(bookName, cost, bci, sti, ci1, sbi);
         refreshTableBooks();
         newBook += bv.toString();
         System.out.println(newBook);
-        newBook = tp_showStudent.getText() + "\n" + newBook;
-        tp_showStudent.setText(newBook);
+        newBook = tpShowStudent.getText() + "\n" + newBook;
+        tpShowStudent.setText(newBook);
 
-        tx_bookName.setText("");
-        tx_bookHealth.setText("");
-        sp_bookCost.setValue(0);
+        txBookName.setText("");
+        txBookHealth.setText("");
+        spBookCost.setValue(0);
 
-        lb_logMessage.setText("Libro aggiunto con successo!");
+        lbLogMessage.setText("Libro aggiunto con successo!");
 
     }// GEN-LAST:event_btInsertBookActionPerformed
 
-    private void lst_classesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
+    private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
 
         // TODO add your handling code here:
         // int index = lst_classesList.getSelectedIndex();
-        String section = lst_classesList.getSelectedValue().getSection();
-        int classId = lst_classesList.getSelectedValue().getIdClass();
-        lb_logMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
+        String section = lstClassesList.getSelectedValue().getSection();
+        int classId = lstClassesList.getSelectedValue().getIdClass();
+        lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
     }// GEN-LAST:event_lst_classesListValueChanged
 
-    private void tx_bookNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_bookNameActionPerformed
+    private void txBookNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_bookNameActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_tx_bookNameActionPerformed
 
-    private void lst_classesBookValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesBookValueChanged
+    private void lstClassesBookValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesBookValueChanged
         // TODO add your handling code here:
         // int index = lst_classesBook.getSelectedIndex();
-        String section = lst_classesBook.getSelectedValue().getSection();
-        int classId = lst_classesBook.getSelectedValue().getIdClass();
-        lb_logMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
+        String section = lstClassesBook.getSelectedValue().getSection();
+        int classId = lstClassesBook.getSelectedValue().getIdClass();
+        lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
     }// GEN-LAST:event_lst_classesBookValueChanged
 
-    private void lst_subjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_subjectsValueChanged
+    private void lstSubjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_subjectsValueChanged
         // TODO add your handling code here:
         // int index = lst_subjects.getSelectedIndex();
-        String subject = lst_subjects.getSelectedValue().getSubjectName();
+        String subject = lstSubjects.getSelectedValue().getSubjectName();
         // int classId = lst_subjects.getSelectedValue().getIdSubject();
-        lb_logMessage.setText("SUBJECT: " + subject);
+        lbLogMessage.setText("SUBJECT: " + subject);
 
     }// GEN-LAST:event_lst_subjectsValueChanged
 
@@ -553,7 +546,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         List<StudentClass> result = SchoolMarket.classesList();
         DefaultListModel<StudentClass> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
-        lst_classesList.setModel(model);
+        lstClassesList.setModel(model);
 
     }
 
@@ -604,12 +597,14 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         List<Student> result = SchoolMarket.studentsList();
         DefaultListModel<Student> model = new DefaultListModel<>();
-        //result.forEach(v -> model.addElement(v));
-        for (Student student : result) {
+        result.forEach(v -> model.addElement(v));
+        result.forEach(v -> listIdStudents.add(v.getIdStudent()));
+        
+        /*for (Student student : result) {
                 model.addElement(student);
                 listIdStudents.add(student.getIdStudent());
         }
-        lst_studentsList.setModel(model);
+        lst_studentsList.setModel(model);*/
 
     }
 
@@ -618,18 +613,16 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         List<StudentClass> result = SchoolMarket.classesList();
         DefaultListModel<StudentClass> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
-        lst_classesBook.setModel(model);
+        lstClassesBook.setModel(model);
 
     }
 
     private void refreshTableBooks() {
 
-        
-        int index = lst_studentsList.getSelectedIndex();
+        int index = lstStudentsList.getSelectedIndex();
         int idstSelected = listIdStudents.get(index);
         List<Book> booksByUser = SchoolMarket.booksByUser(idstSelected);
-        DefaultTableModel model = (DefaultTableModel) tb_booksList.getModel();
-        DefaultTableModel dm = (DefaultTableModel) tb_booksList.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbBooksList.getModel();
 
         while (model.getRowCount() > 0) {
                 model.removeRow(0);
@@ -645,42 +638,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 };
                 model.addRow(obj);
         }
-        tb_booksList.setModel(model);
-
-        /*try {
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            PreparedStatement stmt = conn.prepareStatement("SELECT tb.book_name, tc.section, tb.cost, tb.grade, count(tb.id_subject) as quantity " +
-                                                           "FROM t_books as tb " +
-                                                           "join t_subjects tsu on tsu.id_subjects = tb.id_subject " +
-                                                           "join t_classes tc on tc.id_class = tb.id_class " +
-                                                           "group by tb.id_subject, tb.grade, tb.id_class, tc.section, tb.book_name, tb.cost " +
-                                                           "order by tc.section");
-            ResultSet rs = stmt.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) tb_booksList.getModel();
-            
-            DefaultTableModel dm = (DefaultTableModel)tb_booksList.getModel();
-
-            while(dm.getRowCount() > 0)
-            {
-                dm.removeRow(0);
-            }
-
-            while (rs.next()) {
-                String tb = rs.getString("tb.book_name");
-                String cl = rs.getString("tc.section");
-                String gr = rs.getString("tb.grade");
-                int co = rs.getInt("tb.cost");
-                int qua = rs.getInt("quantity");
-            Object[] obj = new Object[]{
-                tb,cl,co,gr,qua
-            };
-            model.addRow(obj);
-                
-            }
-            tb_booksList.setModel(model);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
+        tbBooksList.setModel(model);
     
     }
 
@@ -689,7 +647,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         List<Subject> result = SchoolMarket.subjectList();
         DefaultListModel<Subject> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
-        lst_subjects.setModel(model);
+        lstSubjects.setModel(model);
 
     }
 
@@ -728,20 +686,20 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lb_logMessage;
-    private javax.swing.JList<StudentClass> lst_classesBook;
-    private javax.swing.JList<StudentClass> lst_classesList;
-    private javax.swing.JList<Student> lst_studentsList;
-    private javax.swing.JList<Subject> lst_subjects;
-    private javax.swing.JSpinner sp_bookCost;
-    private javax.swing.JTable tb_booksList;
-    private javax.swing.JTextPane tp_showStudent;
-    private javax.swing.JTextField tx_age;
-    private javax.swing.JTextField tx_bookHealth;
-    private javax.swing.JTextField tx_bookName;
-    private javax.swing.JTextField tx_email;
-    private javax.swing.JTextField tx_firstName;
-    private javax.swing.JTextField tx_lastName;
+    private javax.swing.JLabel lbLogMessage;
+    private javax.swing.JList<StudentClass> lstClassesBook;
+    private javax.swing.JList<StudentClass> lstClassesList;
+    private javax.swing.JList<Student> lstStudentsList;
+    private javax.swing.JList<Subject> lstSubjects;
+    private javax.swing.JSpinner spBookCost;
+    private javax.swing.JTable tbBooksList;
+    private javax.swing.JTextPane tpShowStudent;
+    private javax.swing.JTextField txAge;
+    private javax.swing.JTextField txBookHealth;
+    private javax.swing.JTextField txBookName;
+    private javax.swing.JTextField txEmail;
+    private javax.swing.JTextField txFirstName;
+    private javax.swing.JTextField txLastName;
     // End of variables declaration//GEN-END:variables
 
 }
