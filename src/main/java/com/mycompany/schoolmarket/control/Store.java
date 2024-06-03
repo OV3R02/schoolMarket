@@ -2,6 +2,8 @@ package com.mycompany.schoolmarket.control;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.mycompany.schoolmarket.entity.Book;
 import com.mycompany.schoolmarket.entity.BookCondition;
@@ -68,37 +70,35 @@ public class Store {
         return saved;
     }
 
-    public static Optional<Student> findStudentById(long idStudent) {
-        Student st = em.find(Student.class, idStudent);
-        return st == null ? Optional.empty() : Optional.of(st);
-    }
-
-    public static Optional<Book> findBookById(long idBook) {
-        Book bk = em.find(Book.class, idBook);
-        return bk == null ? Optional.empty() : Optional.of(bk);
-    }
-
     public static StudentClass getClassIndex(long idClass) {
-        TypedQuery<StudentClass> query = em.createNamedQuery(StudentClass.FIND_BY_CLASS_ID, StudentClass.class);
-        StudentClass cl = query.setParameter("id", idClass).getSingleResult();
+        TypedQuery<StudentClass> query = em
+            .createNamedQuery(StudentClass.FIND_BY_CLASS_ID, StudentClass.class);
+        StudentClass cl = query
+            .setParameter("id", idClass).getSingleResult();
         return cl;
     }
 
     public static BookCondition getBookConditionIndex(String idBookCondition) {
-        TypedQuery<BookCondition> query = em.createNamedQuery(BookCondition.FIND_BY_CONDITION_ID, BookCondition.class);
-        BookCondition bc = query.setParameter("grade", idBookCondition).getSingleResult();
+        TypedQuery<BookCondition> query = em
+            .createNamedQuery(BookCondition.FIND_BY_CONDITION_ID, BookCondition.class);
+        BookCondition bc = query
+            .setParameter("grade", idBookCondition).getSingleResult();
         return bc;
     }
 
     public static Student getStudentIndex(long idStudent) {
-        TypedQuery<Student> query = em.createNamedQuery(Student.FIND_BY_STUDENT_ID, Student.class);
-        Student st = query.setParameter("id", idStudent).getSingleResult();
+        TypedQuery<Student> query = em
+            .createNamedQuery(Student.FIND_BY_STUDENT_ID, Student.class);
+        Student st = query
+            .setParameter("id", idStudent).getSingleResult();
         return st;
     }
 
     public static Subject getSubjectIndex(long idSubject) {
-        TypedQuery<Subject> query = em.createNamedQuery(Subject.FIND_BY_SUBJECT_ID, Subject.class);
-        Subject sb = query.setParameter("id", idSubject).getSingleResult();
+        TypedQuery<Subject> query = em
+            .createNamedQuery(Subject.FIND_BY_SUBJECT_ID, Subject.class);
+        Subject sb = query
+            .setParameter("id", idSubject).getSingleResult();
         return sb;
     }
 
@@ -121,11 +121,6 @@ public class Store {
 
     public static List<Subject> allSubjectList() {
         return em.createQuery("SELECT e FROM Subject e", Subject.class)
-            .getResultList();
-    }
-
-    public static List<Book> findAllBooks() {
-        return em.createQuery("SELECT e FROM Book e", Book.class)
-            .getResultList();
+                .getResultList();
     }
 }

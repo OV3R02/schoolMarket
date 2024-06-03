@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 
 @NamedQueries({
-    @NamedQuery(name = Student.FIND_BY_STUDENT_ID, query = "SELECT e FROM Student e WHERE e.idStudent = :id")
+    @NamedQuery(name = Student.FIND_BY_STUDENT_ID, query = "SELECT e FROM Student e WHERE e.idStudent = :id"),
 })
 
 @Entity
@@ -123,8 +123,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return "\n idStudent: " + idStudent + "\n firstname: " + fname + "\n lastname: " + lname + "\n age: " + age + "\n email: "
-                + email + "\n tel: " + tel + "\n classSection: " + classSection;
+        return "firstname: " + fname + " - lastname: " + lname + " - age: " + age + " - email: "
+                + email + " - classSection: " + classSection;
     }
 
 }

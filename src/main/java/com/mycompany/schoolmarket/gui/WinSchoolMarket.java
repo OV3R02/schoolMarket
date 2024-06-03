@@ -496,12 +496,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         Student st = SchoolMarket.getStudent(lstStudentsList.getSelectedValue().getIdStudent());
         StudentClass cl = SchoolMarket.getClass(lstClassesBook.getSelectedValue().getIdClass());
         Subject sb = SchoolMarket.getSubject(lstSubjects.getSelectedValue().getIdSubject());
-/* 
-        BookCondition bci = Store.getBookConditionIndex(txBookHealth.getText());
-        Student sti = Store.getStudentIndex(lstStudentsList.getSelectedValue().getIdStudent());
-        StudentClass ci1 = Store.getClassIndex(lstClassesBook.getSelectedValue().getIdClass());
-        Subject sbi = Store.getSubjectIndex(lstSubjects.getSelectedValue().getIdSubject());
-*/     
         Book bv = SchoolMarket.bookVending(bookName, cost, bc, st, cl, sb);
         refreshTableBooks();
         newBook += bv.toString();
@@ -520,7 +514,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
 
         // TODO add your handling code here:
-        // int index = lst_classesList.getSelectedIndex();
         String section = lstClassesList.getSelectedValue().getSection();
         int classId = lstClassesList.getSelectedValue().getIdClass();
         lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
@@ -603,6 +596,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         DefaultListModel<Student> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
         result.forEach(v -> listIdStudents.add(v.getIdStudent()));
+        lstStudentsList.setModel(model);
 
     }
 
@@ -627,10 +621,10 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         }
 
         for (Book b : booksByUser) {
-                String bn = b.getBookName().toString();
-                String cs = b.getClassSection().toString();
-                String co = b.getCost().toString();
-                String gr = b.getGrade().toString();
+                String bn = b.getBookName();
+                StudentClass cs = b.getClassSection();
+                BigDecimal co = b.getCost();
+                BookCondition gr = b.getGrade();
                 Object[] obj = new Object[]{
                         bn, cs, co, gr
                 };

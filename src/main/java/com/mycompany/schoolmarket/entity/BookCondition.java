@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Size;
 
 @NamedQueries({
-    @NamedQuery(name = BookCondition.FIND_BY_CONDITION_ID, query =  "SELECT e FROM BookCondition e WHERE e.grade = :grade")
+    @NamedQuery(name = BookCondition.FIND_BY_CONDITION_ID, query =  "SELECT e.grade FROM BookCondition e WHERE e.grade = :grade")
 })
 @Entity
 @Table(name = "t_conditions")

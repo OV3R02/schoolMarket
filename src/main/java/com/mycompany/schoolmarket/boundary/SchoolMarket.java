@@ -44,36 +44,32 @@ public class SchoolMarket {
             throw new RegistrationException("Book registration failed!");
         }
     }
-
-    public static List<Book> booksByUser(int idStudent) {
-        return Store.findBooksByStudentId(idStudent);
-    }
-
-
+    
+    
     public static List<StudentClass> classesList() {
         return Store.findAllClasses();
     }
-
-
+    
+    
     public static List<Student> studentsList() {
         return Store.allStudentsList();
     }
-
-
+    
+    
     public static List<Subject> subjectList() {
         return Store.allSubjectList();
     }
-
-    public static List<Book> booksList() {
-        return Store.findAllBooks();
-    }
-
-
+    
+    
     public static BookCondition getBookCondition(String grade) {
         return Store.getBookConditionIndex(grade);
     }
-
-
+    
+    
+    public static List<Book> booksByUser(int idStudent) {
+        return Store.findBooksByStudentId(idStudent);
+    }
+    
     public static Student getStudent(long idStudent) {
         return Store.getStudentIndex(idStudent);
     }
