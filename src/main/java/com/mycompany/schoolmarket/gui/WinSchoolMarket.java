@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class WinSchoolMarket extends javax.swing.JFrame {
 
     ArrayList<Integer> listIdStudents = new ArrayList<>();
+
     /**
      * Creates new form WinSchoolMarket
      */
@@ -33,7 +34,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         refreshListStudents();
         refreshListClassBooks();
         refreshListSubjects();
-        //refreshTableBooks();
     }
 
     /**
@@ -525,7 +525,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void lstClassesBookValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesBookValueChanged
         // TODO add your handling code here:
-        // int index = lst_classesBook.getSelectedIndex();
         String section = lstClassesBook.getSelectedValue().getSection();
         int classId = lstClassesBook.getSelectedValue().getIdClass();
         lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
