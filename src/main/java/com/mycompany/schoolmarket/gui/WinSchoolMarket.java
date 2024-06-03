@@ -443,11 +443,11 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txFirstNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_firstNameActionPerformed
-        // TODO add your handling code here:
+        
     }// GEN-LAST:event_tx_firstNameActionPerformed
 
     private void btInsertStudentSubscriptionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertStudentSubscriptionActionPerformed
-        // TODO add your handling code here:
+        
 
         StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList, tpShowStudent, lbLogMessage);
         refreshListStudents();
@@ -455,7 +455,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     }// GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
 
     private void btInsertBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertBookActionPerformed
-        // TODO add your handling code here:
+        
 
         BookVendingGui.BookVending(txBookName, txBookHealth, spBookCost, lstStudentsList, lstClassesBook, lstSubjects, tpShowStudent, lbLogMessage);
         refreshTableBooks();
@@ -463,7 +463,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     }// GEN-LAST:event_btInsertBookActionPerformed
 
     private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
-        // TODO add your handling code here:
+        
         
         String firstname = lstStudentsList.getSelectedValue().getFname();
         String lastname = lstStudentsList.getSelectedValue().getLname();
@@ -476,25 +476,25 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
 
-        // TODO add your handling code here:
+        
         String section = lstClassesList.getSelectedValue().getSection();
         int classId = lstClassesList.getSelectedValue().getIdClass();
         lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
     }// GEN-LAST:event_lst_classesListValueChanged
 
     private void txBookNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_bookNameActionPerformed
-        // TODO add your handling code here:
+        
     }// GEN-LAST:event_tx_bookNameActionPerformed
 
     private void lstClassesBookValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesBookValueChanged
-        // TODO add your handling code here:
+        
         String section = lstClassesBook.getSelectedValue().getSection();
         int classId = lstClassesBook.getSelectedValue().getIdClass();
         lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
     }// GEN-LAST:event_lst_classesBookValueChanged
 
     private void lstSubjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_subjectsValueChanged
-        // TODO add your handling code here:
+        
         String subject = lstSubjects.getSelectedValue().getSubjectName();
         lbLogMessage.setText("SUBJECT: " + subject);
 
