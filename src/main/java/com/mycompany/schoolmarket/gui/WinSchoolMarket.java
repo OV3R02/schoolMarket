@@ -104,11 +104,11 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
             },
             new String [] {
-                "nome", "classe", "costo", "grado", "quantity"
+                "nome", "classe", "costo", "grado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -450,28 +450,18 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private void btInsertStudentSubscriptionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertStudentSubscriptionActionPerformed
         // TODO add your handling code here:
 
-        String newStudent = "Le credenziali del nuovo studente sono: \n";
-        String firstName = txFirstName.getText();
-        String lastName = txLastName.getText();
-        String email = txEmail.getText();
-        String age = txAge.getText();
-        int ageNum = Integer.parseInt(age);
-
-        StudentClass ci = Store.getClassIndex(lstClassesList.getSelectedIndex());
-        Student str = SchoolMarket.studentRegistration(firstName, lastName, ageNum, email, null, ci);
-        newStudent += str.toString();
-        System.out.println(newStudent);
-        newStudent = tpShowStudent.getText() + "\n" + newStudent;
-        tpShowStudent.setText(newStudent);
-
-        txFirstName.setText("");
-        txLastName.setText("");
-        txAge.setText("");
-        txEmail.setText("");
-
-        lbLogMessage.setText("Studente aggiunto con successo!");
+        StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList, tpShowStudent, lbLogMessage);
+        refreshListStudents();
 
     }// GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
+
+    private void btInsertBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertBookActionPerformed
+        // TODO add your handling code here:
+
+        BookVendingGui.BookVending(txBookName, txBookHealth, spBookCost, lstStudentsList, lstClassesBook, lstSubjects, tpShowStudent, lbLogMessage);
+        refreshTableBooks();
+
+    }// GEN-LAST:event_btInsertBookActionPerformed
 
     private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
         // TODO add your handling code here:
@@ -484,32 +474,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         lbLogMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection);
         refreshTableBooks();
     }// GEN-LAST:event_lst_studentsListValueChanged
-
-    private void btInsertBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertBookActionPerformed
-        // TODO add your handling code here:
-
-        String newBook = "Le credenziali del nuovo libro sono: \n";
-        String bookName = txBookName.getText();
-        BigDecimal cost = BigDecimal.valueOf((double) spBookCost.getValue()) ;
-
-        BookCondition bc = SchoolMarket.getBookCondition(txBookHealth.getText());
-        Student st = SchoolMarket.getStudent(lstStudentsList.getSelectedValue().getIdStudent());
-        StudentClass cl = SchoolMarket.getClass(lstClassesBook.getSelectedValue().getIdClass());
-        Subject sb = SchoolMarket.getSubject(lstSubjects.getSelectedValue().getIdSubject());
-        Book bv = SchoolMarket.bookVending(bookName, cost, bc, st, cl, sb);
-        refreshTableBooks();
-        newBook += bv.toString();
-        System.out.println(newBook);
-        newBook = tpShowStudent.getText() + "\n" + newBook;
-        tpShowStudent.setText(newBook);
-
-        txBookName.setText("");
-        txBookHealth.setText("");
-        spBookCost.setValue(0);
-
-        lbLogMessage.setText("Libro aggiunto con successo!");
-
-    }// GEN-LAST:event_btInsertBookActionPerformed
 
     private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
 
@@ -614,11 +578,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         int idstSelected = listIdStudents.get(index);
         List<Book> booksByUser = SchoolMarket.booksByUser(idstSelected);
         DefaultTableModel model = (DefaultTableModel) tbBooksList.getModel();
-
-        while (model.getRowCount() > 0) {
-                model.removeRow(0);
-        }
-
+        model.setRowCount(0);
+        
         for (Book b : booksByUser) {
                 String bn = b.getBookName();
                 StudentClass cs = b.getClassSection();

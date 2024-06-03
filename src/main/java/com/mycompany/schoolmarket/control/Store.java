@@ -70,7 +70,7 @@ public class Store {
         return saved;
     }
 
-    public static StudentClass getClassIndex(long idClass) {
+    public static StudentClass getClassIndex(int idClass) {
         TypedQuery<StudentClass> query = em
             .createNamedQuery(StudentClass.FIND_BY_CLASS_ID, StudentClass.class);
         StudentClass cl = query

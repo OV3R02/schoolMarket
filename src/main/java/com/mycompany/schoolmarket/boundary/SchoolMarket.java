@@ -83,4 +83,9 @@ public class SchoolMarket {
     public static Subject getSubject(int idSubject) {
         return Store.getSubjectIndex(idSubject);
     }
+
+
+    public static StudentClass getClassIdByjListValue(int value) {
+        return Store.getClassIndex(value);
+    }
 }
