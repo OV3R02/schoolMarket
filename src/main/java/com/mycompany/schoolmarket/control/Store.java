@@ -98,7 +98,7 @@ public class Store {
         return sb;
     }
 
-    public static List<Book> findBooksByStudentId(long idStudent) {
+    public static List<Book> findBooksByStudentId(int idStudent) {
         return em.createNamedQuery(Book.FIND_BY_STUDENT_ID, Book.class)
                 .setParameter("id", idStudent)
                 .getResultList();

@@ -23,6 +23,7 @@ public class StudentSubscriptionGui {
         
         StudentClass ci = SchoolMarket.getClassIdByjListValue(lstClassesList.getSelectedValue().getIdClass());
         Student str = SchoolMarket.studentRegistration(firstName, lastName, ageNum, email, null, ci);
+        
         newStudent += str.toString();
         System.out.println(newStudent);
         newStudent = tpShowStudent.getText() + "\n" + newStudent;

@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class WinSchoolMarket extends javax.swing.JFrame {
 
-    ArrayList<Integer> listIdStudents = new ArrayList<>();
+    ArrayList<Student> listIdStudents = new ArrayList<>();
 
     /**
      * Creates new form WinSchoolMarket
@@ -33,6 +33,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         refreshListStudents();
         refreshListClassBooks();
         refreshListSubjects();
+        //refreshTableBooks();
     }
 
     /**
@@ -464,14 +465,19 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
         
+        if (lstStudentsList.getSelectedValue()!=null) {
+        } else {
+            
+        }
+            Student st = lstStudentsList.getSelectedValue();
+            String name = st.getFname() + " " + st.getLname();
+            StudentClass classSection = lstStudentsList.getSelectedValue().getClassSection();
+            int idStudent = lstStudentsList.getSelectedValue().getIdStudent();
+            lbLogMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection + "ID: " + idStudent);
+            
         
-        String firstname = lstStudentsList.getSelectedValue().getFname();
-        String lastname = lstStudentsList.getSelectedValue().getLname();
-        String name = lastname + " " + firstname;
-
-        StudentClass classSection = lstStudentsList.getSelectedValue().getClassSection();
-        lbLogMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection);
-        refreshTableBooks();
+        refreshTableBooks(); 
+        
     }// GEN-LAST:event_lst_studentsListValueChanged
 
     private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
@@ -557,7 +563,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         List<Student> result = SchoolMarket.studentsList();
         DefaultListModel<Student> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
-        result.forEach(v -> listIdStudents.add(v.getIdStudent()));
         lstStudentsList.setModel(model);
 
     }
@@ -573,23 +578,17 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void refreshTableBooks() {
 
-        int index = lstStudentsList.getSelectedIndex();
-        int idstSelected = listIdStudents.get(index);
-        List<Book> booksByUser = SchoolMarket.booksByUser(idstSelected);
+        int index = lstStudentsList.getSelectedValue().getIdStudent();
+        List<Book> booksByUser = SchoolMarket.booksByUser(index);
         DefaultTableModel model = (DefaultTableModel) tbBooksList.getModel();
         model.setRowCount(0);
-        
-        for (Book b : booksByUser) {
-                String bn = b.getBookName();
-                StudentClass cs = b.getClassSection();
-                BigDecimal co = b.getCost();
-                BookCondition gr = b.getGrade();
-                Object[] obj = new Object[]{
-                        bn, cs, co, gr
-                };
-                model.addRow(obj);
-        }
-        tbBooksList.setModel(model);
+
+        booksByUser.stream().map(book -> new Object[] {
+            book.getBookName().toString(),
+            book.getClassSection().toString(),
+            book.getCost().toString(),
+            book.getGrade().toString()
+        }).forEach(row -> model.addRow(row));
     
     }
 
