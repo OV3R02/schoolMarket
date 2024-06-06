@@ -6,12 +6,9 @@ package com.mycompany.schoolmarket.gui;
 
 import com.mycompany.schoolmarket.boundary.SchoolMarket;
 import com.mycompany.schoolmarket.entity.Book;
-import com.mycompany.schoolmarket.entity.BookCondition;
 import com.mycompany.schoolmarket.entity.Student;
 import com.mycompany.schoolmarket.entity.StudentClass;
 import com.mycompany.schoolmarket.entity.Subject;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
@@ -22,8 +19,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class WinSchoolMarket extends javax.swing.JFrame {
 
-    ArrayList<Student> listIdStudents = new ArrayList<>();
-
     /**
      * Creates new form WinSchoolMarket
      */
@@ -33,7 +28,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         refreshListStudents();
         refreshListClassBooks();
         refreshListSubjects();
-        //refreshTableBooks();
     }
 
     /**
@@ -466,16 +460,12 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
         
         if (lstStudentsList.getSelectedValue()!=null) {
-        } else {
-            
-        }
             Student st = lstStudentsList.getSelectedValue();
             String name = st.getFname() + " " + st.getLname();
             StudentClass classSection = lstStudentsList.getSelectedValue().getClassSection();
             int idStudent = lstStudentsList.getSelectedValue().getIdStudent();
             lbLogMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection + "ID: " + idStudent);
-            
-        
+        }
         refreshTableBooks(); 
         
     }// GEN-LAST:event_lst_studentsListValueChanged
