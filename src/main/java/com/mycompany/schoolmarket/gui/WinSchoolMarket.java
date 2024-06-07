@@ -492,7 +492,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         List<StudentClass> result = SchoolMarket.classesList();
         DefaultListModel<StudentClass> model = new DefaultListModel<>();
-        result.forEach(v -> model.addElement(v));
+        result.forEach(model::addElement);
         lstClassesList.setModel(model);
 
     }
