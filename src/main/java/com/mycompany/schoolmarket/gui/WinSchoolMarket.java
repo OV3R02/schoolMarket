@@ -87,6 +87,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,6 +226,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         jLabel25.setText("Se invece ti sei già registrato/a puoi scegliere tra gli utenti esistenti : ");
 
+        jLabel23.setText("(es. 45,55)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -254,7 +257,10 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(spBookCost, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel10))
+                                                    .addComponent(jLabel10)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(jLabel23)))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel14)
@@ -318,7 +324,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel25)
-                                    .addComponent(lbLogMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbLogMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +408,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
                             .addComponent(jLabel11)
-                            .addComponent(jLabel14))
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel23))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
@@ -428,21 +435,17 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private void btInsertStudentSubscriptionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertStudentSubscriptionActionPerformed
         
 
+        // Metodo per registrare un nuovo studente attraverso gui (eventListener JButton)
+
         StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList, tpShowStudent, lbLogMessage);
         refreshListStudents();
-        
-        if (lstClassesList.getSelectedValue()!=null) {
-            int idClass = lstClassesList.getSelectedValue().getIdClass();
-            StudentClass classIdByjListValue = SchoolMarket.getClassIdByjListValue(idClass);
-            
-            
-            refreshListClass();
-        }
 
     }// GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
 
     private void btInsertBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertBookActionPerformed
         
+
+         // Metodo per inserire un nuovo libro dello studente attraverso gui (eventListener JButton)
 
         BookVendingGui.BookVending(txBookName, txBookHealth, spBookCost, lstStudentsList, lstClassesBook, lstSubjects, tpShowStudent, lbLogMessage);
         refreshTableBooks();
@@ -450,24 +453,24 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     }// GEN-LAST:event_btInsertBookActionPerformed
 
     private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
-        
+
         if (lstStudentsList.getSelectedValue()!=null) {
             Student st = lstStudentsList.getSelectedValue();
             String name = st.getFname() + " " + st.getLname();
-            StudentClass classSection = lstStudentsList.getSelectedValue().getClassSection();
             int idStudent = lstStudentsList.getSelectedValue().getIdStudent();
-            lbLogMessage.setText(" STUDENT_NAME: " + name + " " + "CLASS_SECTION: " + classSection + "ID: " + idStudent);
+            lbLogMessage.setText(" STUDENT_NAME: " + name + " ID: " + idStudent);
+            refreshTableBooks(); 
         }
-        refreshTableBooks(); 
+        
         
     }// GEN-LAST:event_lst_studentsListValueChanged
 
     private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
-
         
         String section = lstClassesList.getSelectedValue().getSection();
         int classId = lstClassesList.getSelectedValue().getIdClass();
         lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
+
     }// GEN-LAST:event_lst_classesListValueChanged
 
     private void txBookNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_bookNameActionPerformed
@@ -479,16 +482,20 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         String section = lstClassesBook.getSelectedValue().getSection();
         int classId = lstClassesBook.getSelectedValue().getIdClass();
         lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
+
     }// GEN-LAST:event_lst_classesBookValueChanged
 
     private void lstSubjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_subjectsValueChanged
         
         String subject = lstSubjects.getSelectedValue().getSubjectName();
-        lbLogMessage.setText("SUBJECT: " + subject);
+        int subjectId = lstSubjects.getSelectedValue().getIdSubject();
+        lbLogMessage.setText("SUBJECT: " + subject + " ID: " + subjectId);
 
     }// GEN-LAST:event_lst_subjectsValueChanged
 
     public void refreshListClass() {
+
+        // Metodo di ripopolamento della lista classi dello studente eseguito all'avvio del programma
 
         List<StudentClass> result = SchoolMarket.classesList();
         DefaultListModel<StudentClass> model = new DefaultListModel<>();
@@ -542,6 +549,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     public void refreshListStudents() {
 
+        // Metodo di ripopolamento della lista degli studenti eseguito all'avvio del programma e successivamente all'inserimento di un nuovo studente
+
         List<Student> result = SchoolMarket.studentsList();
         DefaultListModel<Student> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
@@ -551,6 +560,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void refreshListClassBooks() {
 
+        // Metodo di ripopolamento della lista delle classi a cui appartiene il libro eseguito all'avvio del programma
+
         List<StudentClass> result = SchoolMarket.classesList();
         DefaultListModel<StudentClass> model = new DefaultListModel<>();
         result.forEach(v -> model.addElement(v));
@@ -559,6 +570,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     }
 
     private void refreshTableBooks() {
+
+        // Metodo di ripopolamento della tabella (JTabel) eseguito alla selezione dello studente dalla lista e successivamente all'inserimento di un nuovo libro
 
         int index = lstStudentsList.getSelectedValue().getIdStudent();
         List<Book> booksByUser = SchoolMarket.booksByUser(index);
@@ -575,6 +588,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     }
 
     private void refreshListSubjects() {
+
+        // Metodo di ripopolamento della lista delle materia eseguito all'avvio del programma
 
         List<Subject> result = SchoolMarket.subjectList();
         DefaultListModel<Subject> model = new DefaultListModel<>();
@@ -601,6 +616,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
