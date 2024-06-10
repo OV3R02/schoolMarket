@@ -197,7 +197,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         jLabel15.setText("LISTA LIBRI");
 
         jLabel16.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
-        jLabel16.setText("Sei nuovo? ");
+        jLabel16.setText("Sei nuovo/a? ");
 
         jLabel17.setFont(new java.awt.Font("sansserif", 2, 12)); // NOI18N
         jLabel17.setText("Premi \"OKAY\"  per aggiungere il libro");
