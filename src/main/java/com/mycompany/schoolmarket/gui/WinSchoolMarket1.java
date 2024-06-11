@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author utentepc
  */
-public class WinSchoolMarket extends javax.swing.JFrame {
+public class WinSchoolMarket1 extends javax.swing.JFrame {
 
     /**
      * Creates new form WinSchoolMarket
      */
-    public WinSchoolMarket() {
+    public WinSchoolMarket1() {
         initComponents();
         refreshListClass();
         refreshListStudents();
@@ -437,8 +437,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         // Metodo per registrare un nuovo studente attraverso gui (eventListener JButton)
 
-        StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList, tpShowStudent, lbLogMessage);
-        refreshListStudents();
+        /*StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList, tpShowStudent, lbLogMessage);
+        refreshListStudents();*/
 
     }// GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
 
@@ -447,8 +447,8 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
          // Metodo per inserire un nuovo libro dello studente attraverso gui (eventListener JButton)
 
-        BookVendingGui.BookVending(txBookName, txBookHealth, spBookCost, lstStudentsList, lstClassesBook, lstSubjects, tpShowStudent, lbLogMessage);
-        refreshTableBooks();
+        /*BookVendingGui.BookVending(txBookName, txBookHealth, spBookCost, lstStudentsList, lstClassesBook, lstSubjects, tpShowStudent, lbLogMessage);
+        refreshTableBooks();*/
 
     }// GEN-LAST:event_btInsertBookActionPerformed
 
@@ -525,24 +525,25 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(WinSchoolMarket1.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(WinSchoolMarket1.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(WinSchoolMarket1.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(WinSchoolMarket1.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
+        // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WinSchoolMarket().setVisible(true);
+                new WinSchoolMarket1().setVisible(true);
             }
         });
     }

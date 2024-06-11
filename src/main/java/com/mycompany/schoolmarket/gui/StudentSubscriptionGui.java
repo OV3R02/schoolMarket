@@ -1,17 +1,14 @@
 package com.mycompany.schoolmarket.gui;
 
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-
 import com.mycompany.schoolmarket.boundary.SchoolMarket;
 import com.mycompany.schoolmarket.entity.Student;
 import com.mycompany.schoolmarket.entity.StudentClass;
 
 public class StudentSubscriptionGui {
 
-    public static void StudentSubscription(JTextField txFirstName, JTextField txLastName, JTextField txAge, JTextField txEmail, JList<StudentClass> lstClassesList, JTextPane tpShowStudent, JLabel lbLogMessage){
+    public static void StudentSubscription(JTextField txFirstName, JTextField txLastName, JTextField txAge, JTextField txEmail, JList<StudentClass> lstClassesList){
         
         
         
@@ -31,14 +28,9 @@ public class StudentSubscriptionGui {
         // Integrazione dati studente nella casella di log
         newStudent += str.toString();
         System.out.println(newStudent);
-        newStudent = tpShowStudent.getText() + "\n" + newStudent;
-        tpShowStudent.setText(newStudent);
         txFirstName.setText("");
         txLastName.setText("");
         txAge.setText("");
         txEmail.setText("");
-        
-        // Messaggio finale di conferma
-        lbLogMessage.setText("Studente aggiunto con successo!");
     }
 }

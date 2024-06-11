@@ -119,4 +119,10 @@ public class Store {
         return em.createQuery("SELECT e FROM Subject e", Subject.class)
                 .getResultList();
     }
+    
+    public static Student getStudentIndexByEmail(String email) {
+        TypedQuery<Student> query = em.createNamedQuery(Student.FIND_BY_STUDENT_MAIL, Student.class);
+        Student cl = query.setParameter("email", email).getSingleResult();
+        return cl;
+    }
 }

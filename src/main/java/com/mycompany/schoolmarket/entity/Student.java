@@ -14,6 +14,8 @@ import jakarta.validation.constraints.Email;
 
 @NamedQueries({
     @NamedQuery(name = Student.FIND_BY_STUDENT_ID, query = "SELECT e FROM Student e WHERE e.idStudent = :id"),
+    @NamedQuery(name = Student.FIND_BY_STUDENT_MAIL, query = "SELECT e FROM Student e WHERE e.email = :email")
+    
 })
 
 @Entity
@@ -21,6 +23,9 @@ import jakarta.validation.constraints.Email;
 public class Student {
 
     public static final String FIND_BY_STUDENT_ID = "Student.findByStudentId";
+    public static final String FIND_BY_STUDENT_MAIL = "Student.findByStudentMail";
+    
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,29 +5,22 @@
 package com.mycompany.schoolmarket.gui;
 
 import com.mycompany.schoolmarket.boundary.SchoolMarket;
-import com.mycompany.schoolmarket.entity.Book;
-import com.mycompany.schoolmarket.entity.Student;
 import com.mycompany.schoolmarket.entity.StudentClass;
-import com.mycompany.schoolmarket.entity.Subject;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author utentepc
  */
-public class WinSchoolMarket extends javax.swing.JFrame {
+public class AuthWindow extends javax.swing.JFrame {
 
     /**
      * Creates new form WinSchoolMarket
      */
-    public WinSchoolMarket() {
+    public AuthWindow() {
         initComponents();
         refreshListClass();
-        refreshListStudents();
-        refreshListClassBooks();
-        refreshListSubjects();
     }
 
     /**
@@ -41,8 +34,6 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tbBooksList = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -53,63 +44,24 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         txLastName = new javax.swing.JTextField();
         txAge = new javax.swing.JTextField();
         btInsertStudentSubscription = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        txEmail = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstClassesList = new javax.swing.JList<>();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txBookName = new javax.swing.JTextField();
-        spBookCost = new javax.swing.JSpinner();
-        lbLogMessage = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tpShowStudent = new javax.swing.JTextPane();
-        btInsertBook = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        txEmail = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        lstStudentsList = new javax.swing.JList<>();
-        jLabel13 = new javax.swing.JLabel();
-        txBookHealth = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstClassesList = new javax.swing.JList<>();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        lstClassesBook = new javax.swing.JList<>();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        txEmailSet = new javax.swing.JTextField();
+        txPwdSet = new javax.swing.JTextField();
+        btLoginUser = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        lstSubjects = new javax.swing.JList<>();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("SCHOOL MARKET");
-
-        tbBooksList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "nome", "classe", "costo", "grado"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tbBooksList);
 
         jLabel2.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
         jLabel2.setText("Inserisci i tuoi dati nelle caselle sottostanti per registrarti nel e-commerce!");
@@ -137,46 +89,7 @@ public class WinSchoolMarket extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("INSERIRE I DATI DEL NUOVO LIBRO:");
-
-        jLabel9.setText("Nome libro :");
-
-        jLabel10.setText("Costo :");
-
-        jLabel11.setText("Classe :");
-
-        txBookName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txBookNameActionPerformed(evt);
-            }
-        });
-
-        spBookCost.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
-
-        lbLogMessage.setText("nessun dato ancora fornito...");
-
-        jScrollPane3.setViewportView(tpShowStudent);
-
-        btInsertBook.setText("OKAY");
-        btInsertBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInsertBookActionPerformed(evt);
-            }
-        });
-
         jLabel12.setText("E-mail : ");
-
-        lstStudentsList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lstStudentsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstStudentsListValueChanged(evt);
-            }
-        });
-        jScrollPane4.setViewportView(lstStudentsList);
-
-        jLabel13.setText("Stato dell'oggetto :");
-
-        jLabel14.setText("(es. Grado A, B o C)");
 
         lstClassesList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstClassesList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -186,112 +99,64 @@ public class WinSchoolMarket extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstClassesList);
 
-        lstClassesBook.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lstClassesBook.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstClassesBookValueChanged(evt);
-            }
-        });
-        jScrollPane5.setViewportView(lstClassesBook);
-
-        jLabel15.setText("LISTA LIBRI");
-
         jLabel16.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         jLabel16.setText("Sei nuovo? ");
-
-        jLabel17.setFont(new java.awt.Font("sansserif", 2, 12)); // NOI18N
-        jLabel17.setText("Premi \"OKAY\"  per aggiungere il libro");
-
-        jLabel19.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
-        jLabel19.setText("Vuoi vendere un libro?");
-
-        jLabel20.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        jLabel20.setText("Compila i dati sottostanti per aggiungerlo nel catalogo!");
-
-        jLabel21.setText("Materia :");
-
-        lstSubjects.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        lstSubjects.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lstSubjectsValueChanged(evt);
-            }
-        });
-        jScrollPane6.setViewportView(lstSubjects);
 
         jLabel22.setFont(new java.awt.Font("sansserif", 2, 12)); // NOI18N
         jLabel22.setText("Premi \"OKAY\" per completare la registrazione");
 
-        jLabel24.setText("SELEZIONARE ACCOUNT ESISTENTE : ");
+        jLabel8.setFont(new java.awt.Font("sansserif", 3, 17)); // NOI18N
+        jLabel8.setText("LOGIN");
 
-        jLabel25.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
-        jLabel25.setText("Se invece ti sei già registrato/a puoi scegliere tra gli utenti esistenti : ");
+        jLabel9.setText("EMAIL: ");
 
-        jLabel23.setText("(es. 45,55)");
+        jLabel10.setText("PASSWORD: ");
+
+        txPwdSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txPwdSetActionPerformed(evt);
+            }
+        });
+
+        btLoginUser.setText("login");
+        btLoginUser.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                btLoginUserInputMethodTextChanged(evt);
+            }
+        });
+        btLoginUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLoginUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btLoginUser)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txEmailSet)
+                            .addComponent(txPwdSet, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(65, 65, 65))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(408, 408, 408))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel9)
-                                            .addComponent(txBookName, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(spBookCost, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel10)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(6, 6, 6)
-                                                        .addComponent(jLabel23)))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel14)
-                                                    .addComponent(txBookHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel13)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(27, 27, 27)
-                                                .addComponent(jLabel18))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(btInsertBook)
-                                                    .addComponent(jLabel17)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel21)
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel8))
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel20))
-                        .addGap(1051, 1051, 1051))
-                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,10 +166,10 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                     .addComponent(jLabel12))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txAge, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                    .addComponent(txAge, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txLastName, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txFirstName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txEmail))
+                                    .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -313,47 +178,50 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                 .addComponent(jLabel22)
                                 .addGap(18, 18, 18)
                                 .addComponent(btInsertStudentSubscription))
-                            .addComponent(jLabel3))
-                        .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel25)
-                                    .addComponent(lbLogMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel16))
+                        .addGap(165, 165, 165)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(521, 521, 521)
-                        .addComponent(jLabel1)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(202, 202, 202)
+                        .addComponent(jLabel8)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel25))
-                .addGap(44, 44, 44)
+                    .addComponent(jLabel9)
+                    .addComponent(txEmailSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel10)
+                    .addComponent(txPwdSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btLoginUser)
+                .addGap(38, 38, 38)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(182, 182, 182))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel3)
+                        .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,61 +240,32 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel22)
-                    .addComponent(btInsertStudentSubscription)
-                    .addComponent(lbLogMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spBookCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txBookHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel23))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btInsertBook)
-                        .addGap(24, 24, 24)))
-                .addContainerGap())
+                            .addComponent(jLabel22)
+                            .addComponent(btInsertStudentSubscription))
+                        .addContainerGap(34, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txPwdSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPwdSetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txPwdSetActionPerformed
+
+    private void btLoginUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginUserActionPerformed
+        // TODO add your handling code here:
+        String email = txEmailSet.getText();
+        String password = txPwdSet.getText();
+        SchoolMarket.getStudentByEmail(email);
+        
+    }//GEN-LAST:event_btLoginUserActionPerformed
+
+    private void btLoginUserInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_btLoginUserInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btLoginUserInputMethodTextChanged
 
     private void txFirstNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_firstNameActionPerformed
         
@@ -437,61 +276,18 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
         // Metodo per registrare un nuovo studente attraverso gui (eventListener JButton)
 
-        StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList, tpShowStudent, lbLogMessage);
-        refreshListStudents();
+        StudentSubscriptionGui.StudentSubscription(txFirstName, txLastName, txAge, txEmail, lstClassesList);
+        
+        
 
     }// GEN-LAST:event_btInsertStudentSubscriptionActionPerformed
-
-    private void btInsertBookActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btInsertBookActionPerformed
-        
-
-         // Metodo per inserire un nuovo libro dello studente attraverso gui (eventListener JButton)
-
-        BookVendingGui.BookVending(txBookName, txBookHealth, spBookCost, lstStudentsList, lstClassesBook, lstSubjects, tpShowStudent, lbLogMessage);
-        refreshTableBooks();
-
-    }// GEN-LAST:event_btInsertBookActionPerformed
-
-    private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
-
-        if (lstStudentsList.getSelectedValue()!=null) {
-            Student st = lstStudentsList.getSelectedValue();
-            String name = st.getFname() + " " + st.getLname();
-            int idStudent = lstStudentsList.getSelectedValue().getIdStudent();
-            lbLogMessage.setText(" STUDENT_NAME: " + name + " ID: " + idStudent);
-            refreshTableBooks(); 
-        }
-        
-        
-    }// GEN-LAST:event_lst_studentsListValueChanged
 
     private void lstClassesListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesListValueChanged
         
         String section = lstClassesList.getSelectedValue().getSection();
         int classId = lstClassesList.getSelectedValue().getIdClass();
-        lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
 
     }// GEN-LAST:event_lst_classesListValueChanged
-
-    private void txBookNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tx_bookNameActionPerformed
-        
-    }// GEN-LAST:event_tx_bookNameActionPerformed
-
-    private void lstClassesBookValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_classesBookValueChanged
-        
-        String section = lstClassesBook.getSelectedValue().getSection();
-        int classId = lstClassesBook.getSelectedValue().getIdClass();
-        lbLogMessage.setText("CLASS_ID: " + classId + " SECTION: " + section);
-
-    }// GEN-LAST:event_lst_classesBookValueChanged
-
-    private void lstSubjectsValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_subjectsValueChanged
-        
-        String subject = lstSubjects.getSelectedValue().getSubjectName();
-        int subjectId = lstSubjects.getSelectedValue().getIdSubject();
-        lbLogMessage.setText("SUBJECT: " + subject + " ID: " + subjectId);
-
-    }// GEN-LAST:event_lst_subjectsValueChanged
 
     public void refreshListClass() {
 
@@ -525,100 +321,42 @@ public class WinSchoolMarket extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(AuthWindow.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(AuthWindow.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(AuthWindow.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WinSchoolMarket.class.getName()).log(java.util.logging.Level.SEVERE,
+            java.util.logging.Logger.getLogger(AuthWindow.class.getName()).log(java.util.logging.Level.SEVERE,
                     null, ex);
         }
+        // </editor-fold>
+        // </editor-fold>
+        // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WinSchoolMarket().setVisible(true);
+                new AuthWindow().setVisible(true);
             }
-        });
-    }
-
-    public void refreshListStudents() {
-
-        // Metodo di ripopolamento della lista degli studenti eseguito all'avvio del programma e successivamente all'inserimento di un nuovo studente
-
-        List<Student> result = SchoolMarket.studentsList();
-        DefaultListModel<Student> model = new DefaultListModel<>();
-        result.forEach(v -> model.addElement(v));
-        lstStudentsList.setModel(model);
-
-    }
-
-    private void refreshListClassBooks() {
-
-        // Metodo di ripopolamento della lista delle classi a cui appartiene il libro eseguito all'avvio del programma
-
-        List<StudentClass> result = SchoolMarket.classesList();
-        DefaultListModel<StudentClass> model = new DefaultListModel<>();
-        result.forEach(v -> model.addElement(v));
-        lstClassesBook.setModel(model);
-
-    }
-
-    private void refreshTableBooks() {
-
-        // Metodo di ripopolamento della tabella (JTabel) eseguito alla selezione dello studente dalla lista e successivamente all'inserimento di un nuovo libro
-
-        int index = lstStudentsList.getSelectedValue().getIdStudent();
-        List<Book> booksByUser = SchoolMarket.booksByUser(index);
-        DefaultTableModel model = (DefaultTableModel) tbBooksList.getModel();
-        model.setRowCount(0);
-
-        booksByUser.stream().map(book -> new Object[] {
-            book.getBookName().toString(),
-            book.getClassSection().toString(),
-            book.getCost().toString(),
-            book.getGrade().toString()
-        }).forEach(row -> model.addRow(row));
-    
-    }
-
-    private void refreshListSubjects() {
-
-        // Metodo di ripopolamento della lista delle materia eseguito all'avvio del programma
-
-        List<Subject> result = SchoolMarket.subjectList();
-        DefaultListModel<Subject> model = new DefaultListModel<>();
-        result.forEach(v -> model.addElement(v));
-        lstSubjects.setModel(model);
-
+        }); 
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btInsertBook;
     private javax.swing.JButton btInsertStudentSubscription;
+    private javax.swing.JButton btLoginUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -627,26 +365,14 @@ public class WinSchoolMarket extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lbLogMessage;
-    private javax.swing.JList<StudentClass> lstClassesBook;
     private javax.swing.JList<StudentClass> lstClassesList;
-    private javax.swing.JList<Student> lstStudentsList;
-    private javax.swing.JList<Subject> lstSubjects;
-    private javax.swing.JSpinner spBookCost;
-    private javax.swing.JTable tbBooksList;
-    private javax.swing.JTextPane tpShowStudent;
     private javax.swing.JTextField txAge;
-    private javax.swing.JTextField txBookHealth;
-    private javax.swing.JTextField txBookName;
     private javax.swing.JTextField txEmail;
+    private javax.swing.JTextField txEmailSet;
     private javax.swing.JTextField txFirstName;
     private javax.swing.JTextField txLastName;
+    private javax.swing.JTextField txPwdSet;
     // End of variables declaration//GEN-END:variables
 
 }

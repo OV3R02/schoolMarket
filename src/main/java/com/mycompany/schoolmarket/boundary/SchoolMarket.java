@@ -96,4 +96,8 @@ public class SchoolMarket {
     public static Subject getSubject(int idSubject) {
         return Store.getSubjectIndex(idSubject);
     }
+
+    public static Student getStudentByEmail(String email) {
+        return Store.getStudentIndexByEmail(email);
+    }
 }
