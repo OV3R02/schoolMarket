@@ -21,6 +21,7 @@ public class Store {
 
     }
 
+    // New database connection opened
     public static void openConnection() {
         if (em.getTransaction().isActive()) {
             throw new StoreException("Connection is already open!");
@@ -29,6 +30,7 @@ public class Store {
 
     }
 
+    // Close connection to database
     public static void closeConnection() {
         if (!em.getTransaction().isActive()) {
             throw new StoreException("Connection is not already active!");
@@ -37,6 +39,8 @@ public class Store {
 
     }
 
+    // Roll back connection if something went wrong during the process of
+    // registration
     public static void rollConnection() {
         if (em.getTransaction().isActive()) {
             throw new StoreException("Connection is not already active!");
@@ -45,6 +49,7 @@ public class Store {
 
     }
 
+    // Save the student on database using entity Student.class
     public static Student saveStudent(Student e) {
         if (em.getTransaction().isActive()) {
             return em.merge(e);
@@ -55,6 +60,7 @@ public class Store {
         return saved;
     }
 
+    // Save the book on database using entity Book.class
     public static Book saveBook(Book b) {
 
         if (em.getTransaction().isActive()) {
@@ -68,33 +74,33 @@ public class Store {
 
     public static StudentClass getClassIndex(int idClass) {
         TypedQuery<StudentClass> query = em
-            .createNamedQuery(StudentClass.FIND_BY_CLASS_ID, StudentClass.class);
+                .createNamedQuery(StudentClass.FIND_BY_CLASS_ID, StudentClass.class);
         StudentClass cl = query
-            .setParameter("id", idClass).getSingleResult();
+                .setParameter("id", idClass).getSingleResult();
         return cl;
     }
 
     public static BookCondition getBookConditionIndex(String idBookCondition) {
         TypedQuery<BookCondition> query = em
-            .createNamedQuery(BookCondition.FIND_BY_CONDITION_ID, BookCondition.class);
+                .createNamedQuery(BookCondition.FIND_BY_CONDITION_ID, BookCondition.class);
         BookCondition bc = query
-            .setParameter("grade", idBookCondition).getSingleResult();
+                .setParameter("grade", idBookCondition).getSingleResult();
         return bc;
     }
 
     public static Student getStudentIndex(long idStudent) {
         TypedQuery<Student> query = em
-            .createNamedQuery(Student.FIND_BY_STUDENT_ID, Student.class);
+                .createNamedQuery(Student.FIND_BY_STUDENT_ID, Student.class);
         Student st = query
-            .setParameter("id", idStudent).getSingleResult();
+                .setParameter("id", idStudent).getSingleResult();
         return st;
     }
 
     public static Subject getSubjectIndex(long idSubject) {
         TypedQuery<Subject> query = em
-            .createNamedQuery(Subject.FIND_BY_SUBJECT_ID, Subject.class);
+                .createNamedQuery(Subject.FIND_BY_SUBJECT_ID, Subject.class);
         Subject sb = query
-            .setParameter("id", idSubject).getSingleResult();
+                .setParameter("id", idSubject).getSingleResult();
         return sb;
     }
 

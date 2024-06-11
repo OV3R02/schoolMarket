@@ -12,18 +12,16 @@ import com.mycompany.schoolmarket.entity.Subject;
 
 public class SchoolMarket {
 
-    public static Student studentRegistration(String fname, String lname, int age, String email, String tel, StudentClass classSection){
-        
+    public static Student studentRegistration(String fname, String lname, int age, String email, String tel,
+            StudentClass classSection) {
+
         try {
-            // apertura nuova connessione al database
+
             Store.openConnection();
-            // nuova istanza della classe (entity) student
+            // New Student's class instance
             Student st = new Student(fname, lname, age, email, classSection, tel);
-            // salvataggio nuova istanza sul database
             Student saveStudent = Store.saveStudent(st);
-            // chiusura della connessione con il database
             Store.closeConnection();
-        
             return saveStudent;
         } catch (Exception e) {
             Store.rollConnection();
@@ -31,21 +29,24 @@ public class SchoolMarket {
         }
     }
 
-
-    public static void studentRegistration(String fname, String lname, int age, String email, StudentClass classSection){
+    public static void studentRegistration(String fname, String lname, int age, String email,
+            StudentClass classSection) {
         studentRegistration(fname, lname, age, email, null, classSection);
     }
 
-    public static Book bookVending (String bookName, BigDecimal cost, BookCondition grade, Student student, StudentClass classSection, Subject subject){
-        
+    public static Book bookVending(String bookName, BigDecimal cost, BookCondition grade, Student student,
+            StudentClass classSection, Subject subject) {
+
         try {
-            // apertura nuova connessione al database
+
             Store.openConnection();
-            // nuova istanza della classe (entity) Book
+
+            // New Book's class instance
+
             Book bk = new Book(bookName, cost, grade, student, classSection, subject);
-            // salvataggio nuova istanza sul database
+
             Book saveBook = Store.saveBook(bk);
-            // chiusura della connessione con il database
+
             Store.closeConnection();
             return saveBook;
         } catch (Exception e) {
@@ -53,46 +54,45 @@ public class SchoolMarket {
             throw new RegistrationException("Book registration failed!");
         }
     }
-    
-    
-    // Metodi utili al corretto funzionamento della classe WinSchoolMarket
 
-    // Ritorna tutte le classi
+    // Methods used on WinSchoolMarket
+
+    // Returnes all classes
     public static List<StudentClass> classesList() {
         return Store.findAllClasses();
     }
-    
-    // Ritorna tutti gli studenti
+
+    // Returnes all students
     public static List<Student> studentsList() {
         return Store.allStudentsList();
     }
-    
-    // Ritorna tutte le materie
+
+    // Returnes all subjects
     public static List<Subject> subjectList() {
         return Store.allSubjectList();
     }
-    
-    // Ritorna del grado di usura del libro in base al dato fornito
+
+    // Returns the Book's health-grade based on given data
     public static BookCondition getBookCondition(String grade) {
         return Store.getBookConditionIndex(grade);
     }
-    
-    // Ritorna tutti i libri dello studente selezionato
+
+    // Returns all books based on student id
     public static List<Book> booksByUser(int idStudent) {
         return Store.findBooksByStudentId(idStudent);
     }
-    
-    // Ritorna lo studente in base all'id selezionato
+
+    // Returns student based on selected student id
     public static Student getStudent(long idStudent) {
         return Store.getStudentIndex(idStudent);
     }
 
-    // Ritorna la classe del libro
+    // Returns class section of the book based on class id
     public static StudentClass getClass(int idClass) {
         return Store.getClassIndex(idClass);
     }
 
-    // Ritorna la materia del libro
+    // Returns book's subject based on subject id
     public static Subject getSubject(int idSubject) {
         return Store.getSubjectIndex(idSubject);
     }
