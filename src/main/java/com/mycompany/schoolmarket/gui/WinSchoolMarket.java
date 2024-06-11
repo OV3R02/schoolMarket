@@ -454,11 +454,13 @@ public class WinSchoolMarket extends javax.swing.JFrame {
 
     private void lstStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {// GEN-FIRST:event_lst_studentsListValueChanged
 
-        if (lstStudentsList.getSelectedValue()!=null) {
+        
+        if (!evt.getValueIsAdjusting() && lstStudentsList.getSelectedValue()!=null) {
             Student st = lstStudentsList.getSelectedValue();
             String name = st.getFname() + " " + st.getLname();
             int idStudent = lstStudentsList.getSelectedValue().getIdStudent();
             lbLogMessage.setText(" STUDENT_NAME: " + name + " ID: " + idStudent);
+            System.out.println("ciao");
             refreshTableBooks(); 
         }
         
