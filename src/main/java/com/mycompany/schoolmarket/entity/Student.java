@@ -123,8 +123,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return "NOME: " + fname + "  -  COGNOME: " + lname + "  -  EMAIL: "
-                + email + "  -  SEZIONE: " + classSection;
+        return " \nNOME: " + fname + " \nCOGNOME: " + lname + " \nEMAIL: "
+                + email + " \nSEZIONE: " + classSection;
     }
 
 }
