@@ -10,7 +10,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 
 @NamedQueries({
     @NamedQuery(name = Student.FIND_BY_STUDENT_ID, query = "SELECT e FROM Student e WHERE e.idStudent = :id"),
@@ -33,8 +35,10 @@ public class Student {
     @Column(name = "lastname", nullable = false)
     private String lname;
 
+
     @Column(name = "age", nullable = false)
-    private int age;
+    @Digits(integer = 2, fraction = 0)
+    private Integer age;
 
     @Email(message = "The email is not valid!")
     @Column(name = "email", nullable = false, unique = true)

@@ -42,7 +42,7 @@ public class Store {
     // Roll back connection if something went wrong during the process of
     // registration
     public static void rollConnection() {
-        if (em.getTransaction().isActive()) {
+        if (!em.getTransaction().isActive()) {
             throw new StoreException("Connection is not already active!");
         }
         em.getTransaction().rollback();

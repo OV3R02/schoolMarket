@@ -1,6 +1,7 @@
 package com.mycompany.schoolmarket.boundary;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 import com.mycompany.schoolmarket.control.Store;
@@ -16,7 +17,6 @@ public class SchoolMarket {
             StudentClass classSection) {
 
         try {
-
             Store.openConnection();
             // New Student's class instance
             Student st = new Student(fname, lname, age, email, classSection, tel);
