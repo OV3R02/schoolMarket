@@ -14,7 +14,7 @@ public class BookVendingGui {
 
     public static Book BookVending(String bookName, BookCondition bc, BigDecimal cost, Student st, StudentClass cl, Subject sb) {
 
-        // INserting new book on batabase
+        // Inserting new book on batabase
         Book bv = SchoolMarket.bookVending(bookName, cost, bc, st, cl, sb);
         return bv;
 

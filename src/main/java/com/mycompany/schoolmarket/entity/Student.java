@@ -12,7 +12,6 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
 
 @NamedQueries({
     @NamedQuery(name = Student.FIND_BY_STUDENT_ID, query = "SELECT e FROM Student e WHERE e.idStudent = :id"),
